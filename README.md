@@ -234,6 +234,10 @@ and the code in another class that act as the listener
 
 The code is still the same as before :)
 
+LiveData is applied in MVVM, especially in View and View Model. View Model doesn't have the reference to the caller class, it only set the value and the caller class (usually activity) will listen if there are any changed in that data that the caller needed.
+
+        View (Observer) ---- Observe ----> ViewModel        
+
 Again, this explanation is not complete because it only cover the basic knowledge and how to use the livedata, not all the knowledge of using live data.
 
 
