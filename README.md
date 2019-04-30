@@ -148,3 +148,35 @@ Databinding can let you set value directly from the model, so it will save many 
 5. We can initiate more than 1 variable in 1 XML
 6. @{model.username} used to access the value of variable "username" in the our model.
 7. Actually, model.username will access the getter method in the model class "public String getUsername()", so make sure that the class contain the getter method for each attribute!
+
+### The last, our model class will be like this :
+
+        public class LoginModel{
+            protected String username;
+            protected String password;
+            
+            public void setUsername(String username){
+                this.username = username;
+            }
+            
+            @Bindable
+            public String getUsername(){
+                return username;
+            }
+            
+            public void setPassword(String password){
+                this.password = password;
+            }
+            
+            @Bindable
+            public String getPassword(){
+                return password;
+            }
+        }
+
+we add annotation "@Bindable" above the getter method in each attribute to specify that method is bind to the XML and can
+be access directly from XML.
+
+That's the review of data binding. The explanation isn't completed yet, but you can ask me if you have any question :).
+
+#### Next, we use 
