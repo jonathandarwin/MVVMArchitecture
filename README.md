@@ -179,4 +179,67 @@ be access directly from XML.
 
 That's the review of data binding. The explanation isn't completed yet, but you can ask me if you have any question :).
 
-#### Next, we use 
+#### Next, we use
+## Live Data
+Live data makes your model can be observe. When observed data change its value, it will notify the observer that correspond data is change and the observer can do something to respond that change. For example :
+       
+       MutableLiveData<String> username = new MutableLiveData<>();
+       
+       username.observe(this, new Observer<String>(){
+            @Override
+            public void onChange(@Nullable String username1){
+                // do something
+                // username value : jonathan
+            }
+       });
+       
+       username.setValue("jonathan");
+
+#### Note : Because variable with LiveData type cannot be change, we use MutableLiveData. This two type has the same functionally, except the MutableLiveData value is mutable :)
+
+Explanation :
+First, we declare a variable named "username" with type "MutableLiveData<String>". Simply, "username" is a MutableLiveData that has string value.
+Notice that we observe the change of the "username" variable in this line of code :
+    
+        username.observe(this, new Observer<String>(){
+            @Override
+            public void onChange(@Nullable String username1){
+                // do something
+                // username value : jonathan
+            }
+       });
+       
+When the value of "username" variable is changed, it will trigger this line of code and run the code inside "onChange".
+The listener will triggered when this line of code is executed :
+        
+        username.setValue("jonathan");
+        
+The "username" variable value is set to "jonathan", means that the value is changed. Then it will fired the listener that
+we have already declare before.
+Not only variable, we can observe the method too.
+
+    public LiveData<String> processingUsername(){
+        MutableLiveData<String> username = new MutableLiveData<>();        
+        return username;
+    }
+    
+and the code in another class that act as the listener
+    
+    processingUsername.observe(this, new Observer<String>(){
+        @Override
+        public void onChange(String username1){
+            // do something
+        }
+    });
+
+The code is still the same as before :)
+
+Again, this explanation is not complete because it only cover the basic knowledge and how to use the livedata, not all the knowledge of using live data.
+
+
+#### That's all for the explanation. I hope that you can get a little basic of MVVM and other components that is used in MVVM from this explanation. If you have any questions regarding this code, feel free to contact me :
+
+Line : jnthndrwn
+Instagram : jonathandarwinn
+
+#### Thankyou :)
