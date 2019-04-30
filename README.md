@@ -70,5 +70,23 @@ View Model contain the main businees logic and other control that related to mod
 View has reference to the View Model but the View Model has no reference to caller class.
 The function of View Model is only provide the data to class that need the data.
 #### Note : 1 View can have reference more than 1 View Model.
+
 All the business logic in the View should be pass to the related View Model, View Model will process the logic
-,return the result back to View, and the View will display the result to the screen.
+, return the result back to View, and the View will display the result to the screen.
+
+There are few library that we use to support this architecture :
+
+### Data Binding
+Data binding used to bind activity to XML. usually we used findViewById() to get the object view from XML
+
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+
+Data Binding will elimiinate this line of code. Instead we define the object one by one, we use variable that represent
+the XML. For example :
+
+        LoginActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.login_activity);
+
+Notice that without using data binding we already used this line of code, but without "DataBindingUtil" and the parameter "this"
+
+        setContentView(R.layout.login_activity);
+        
