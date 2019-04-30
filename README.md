@@ -1,10 +1,9 @@
 # MVVM Architecture
-Google introduce the new architecture in android development called MVVM (Model View View Model),
+Google introduced the new architecture in android development called MVVM (Model View View Model),
 which is one of the best architecture in android development aside from MVP (Model View Presenter) and MVI (Model View Intent)
 
 This architecture contains the 3 main components : Model, View, and View Model.
-So what is Model, View, and View Model?
-
+This explanation will cover the use of Model, View, View Model, and other components : Data Binding and LiveData
 
 
 
