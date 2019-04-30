@@ -244,6 +244,7 @@ Again, this explanation is not complete because it only cover the basic knowledg
 #### That's all for the explanation. I hope that you can get a little basic of MVVM and other components that is used in MVVM from this explanation. If you have any questions regarding this code, feel free to contact me :
 
 Line : jnthndrwn
+<br>
 Instagram : jonathandarwinn
 
 #### Thankyou :)
