@@ -139,7 +139,7 @@ Databinding can let you set value directly from the model, so it will save many 
     </layout>
 
 #### Note :
-1. XML will always started with <layout> tag
+1. XML will always started with \<layout\> tag
 2. Tag <layout> only contain 1 parent layout (except <data> tag)
 3. Define variable that will be used in XML inside the <data> tag
 4. <variable> have 2 attributes, "name" represent the name of the variable, "type" represent the data type of correspond variable
