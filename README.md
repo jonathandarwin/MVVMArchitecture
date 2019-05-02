@@ -65,12 +65,11 @@ View will control what will be displayed in the screen.
 
 ## View Model
 View Model is the main component in this architecture.
-View Model contain the main businees logic and control the data that related to model.
-View has reference to the View Model but the View Model has no reference to caller class.
+View Model contain the main businees logic and control the data flow that correspond to specific view.
+View has reference to the View Model but the View Model has no reference to caller class (View).
 The function of View Model is only provide the data to class that need the data and do some business logic.
-#### Note : 1 View can have more than 1 View Model.
 
-All the business logic in the View should be pass to the related View Model, View Model will process the logic
+In summary, all the business logic in the View should be pass to the related View Model, View Model will process the logic
 , return the result back to View, and the View will display the result to the screen.
 
 ### There are few library that we use to support this architecture :
