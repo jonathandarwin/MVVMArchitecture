@@ -140,8 +140,8 @@ Databinding can let you set value directly from the model, so it will save many 
 
 #### Note :
 1. XML will always started with \<layout\> tag
-2. Tag <layout> only contain 1 parent layout (except <data> tag)
-3. Define variable that will be used in XML inside the <data> tag
+2. Tag \<layout\> only contain 1 parent layout (except \<data\> tag)
+3. Define variable that will be used in XML inside the \<data\> tag
 4. <variable> have 2 attributes, "name" represent the name of the variable, "type" represent the data type of correspond variable
 5. We can initiate more than 1 variable in 1 XML
 6. @{model.username} used to access the value of variable "username" in the our model.
@@ -196,7 +196,7 @@ Live data makes your model can be observe. When observed data change its value, 
 #### Note : Because variable with LiveData type cannot be change, we use MutableLiveData. This two type has the same functionally, except the MutableLiveData value is mutable :)
 
 Explanation :
-First, we declare a variable named "username" with type "MutableLiveData<String>". Simply, "username" is a MutableLiveData that has string value.
+First, we declare a variable named "username" with type "MutableLiveData\<String\>". Simply, "username" is a MutableLiveData that has string value.
 Notice that we observe the change of the "username" variable in this line of code :
     
         username.observe(this, new Observer<String>(){
