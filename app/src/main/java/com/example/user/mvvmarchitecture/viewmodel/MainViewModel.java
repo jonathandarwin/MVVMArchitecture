@@ -16,7 +16,7 @@ import java.util.List;
  * Created by User on 3/27/2019.
  */
 
-public class NoteViewModel extends ViewModel {
+public class MainViewModel extends ViewModel {
     protected MutableLiveData<List<Note>> listNote;
 
     public LiveData<List<Note>> getListNote(){
@@ -24,10 +24,5 @@ public class NoteViewModel extends ViewModel {
         NoteRepository repo = new NoteRepository();
         listNote.setValue(repo.getListNote());
         return listNote;
-    }
-
-    public LiveData<Boolean> insertNote(Note note){
-        NoteRepository repo = new NoteRepository();
-        return repo.insertNote(note);
     }
 }

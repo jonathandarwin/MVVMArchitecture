@@ -1,6 +1,5 @@
-package com.example.user.mvvmarchitecture;
+package com.example.user.mvvmarchitecture.app;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -8,24 +7,23 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 
+import com.example.user.mvvmarchitecture.R;
 import com.example.user.mvvmarchitecture.adapter.NoteAdapter;
 import com.example.user.mvvmarchitecture.common.NoteData;
 import com.example.user.mvvmarchitecture.databinding.ActivityMainBinding;
 import com.example.user.mvvmarchitecture.model.Note;
-import com.example.user.mvvmarchitecture.viewmodel.NoteViewModel;
+import com.example.user.mvvmarchitecture.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     ActivityMainBinding binding;
     List<Note> listNote = new ArrayList<>();
-    NoteViewModel viewModel;
+    MainViewModel viewModel;
     NoteAdapter adapter;
 
     @Override
@@ -40,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         NoteData.getInit();
         binding.fabAdd.setOnClickListener(this);
 
-        viewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
     }
 
     @Override

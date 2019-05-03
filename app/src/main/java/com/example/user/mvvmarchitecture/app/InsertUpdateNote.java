@@ -1,4 +1,4 @@
-package com.example.user.mvvmarchitecture;
+package com.example.user.mvvmarchitecture.app;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -6,25 +6,26 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.user.mvvmarchitecture.R;
 import com.example.user.mvvmarchitecture.databinding.ActivityInsertUpdateNoteBinding;
 import com.example.user.mvvmarchitecture.model.Note;
-import com.example.user.mvvmarchitecture.viewmodel.NoteViewModel;
+import com.example.user.mvvmarchitecture.viewmodel.InsertUpdateNoteViewModel;
+import com.example.user.mvvmarchitecture.viewmodel.MainViewModel;
 
 public class InsertUpdateNote extends AppCompatActivity implements View.OnClickListener{
 
     ActivityInsertUpdateNoteBinding binding;
-    NoteViewModel viewModel;
+    InsertUpdateNoteViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_insert_update_note);
         binding.setModel(new Note());
-        viewModel = ViewModelProviders.of(this).get(NoteViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(InsertUpdateNoteViewModel.class);
         binding.btnSave.setOnClickListener(this);
     }
 
