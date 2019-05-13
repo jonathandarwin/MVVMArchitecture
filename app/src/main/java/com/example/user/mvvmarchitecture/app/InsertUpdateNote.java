@@ -10,30 +10,31 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.user.mvvmarchitecture.R;
+import com.example.user.mvvmarchitecture.common.BaseActivity;
 import com.example.user.mvvmarchitecture.databinding.ActivityInsertUpdateNoteBinding;
 import com.example.user.mvvmarchitecture.model.Note;
 import com.example.user.mvvmarchitecture.viewmodel.InsertUpdateNoteViewModel;
 import com.example.user.mvvmarchitecture.viewmodel.MainViewModel;
 
-public class InsertUpdateNote extends AppCompatActivity implements View.OnClickListener{
+public class InsertUpdateNote extends BaseActivity<ActivityInsertUpdateNoteBinding, InsertUpdateNoteViewModel>
+        implements View.OnClickListener{
 
-    ActivityInsertUpdateNoteBinding binding;
-    InsertUpdateNoteViewModel viewModel;
+    public InsertUpdateNote(){
+        super(InsertUpdateNoteViewModel.class, R.layout.activity_insert_update_note);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_insert_update_note);
-        binding.setModel(new Note());
-        viewModel = ViewModelProviders.of(this).get(InsertUpdateNoteViewModel.class);
-        binding.btnSave.setOnClickListener(this);
+        getBinding().setModel(new Note());
+        getBinding().btnSave.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v.equals(binding.btnSave)){
-            Note note = binding.getModel();
-            viewModel.insertNote(note).observe(InsertUpdateNote.this, new Observer<Boolean>() {
+        if(v.equals(getBinding().btnSave)){
+            Note note = getBinding().getModel();
+            getViewModel().insertNote(note).observe(InsertUpdateNote.this, new Observer<Boolean>() {
                 @Override
                 public void onChanged(@Nullable Boolean aBoolean) {
                     if(aBoolean){
