@@ -1,15 +1,9 @@
 package com.example.user.mvvmarchitecture.app;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
-
 import com.example.user.mvvmarchitecture.R;
 import com.example.user.mvvmarchitecture.adapter.NoteAdapter;
 import com.example.user.mvvmarchitecture.common.BaseActivity;
@@ -17,6 +11,8 @@ import com.example.user.mvvmarchitecture.common.NoteData;
 import com.example.user.mvvmarchitecture.databinding.ActivityMainBinding;
 import com.example.user.mvvmarchitecture.model.Note;
 import com.example.user.mvvmarchitecture.viewmodel.MainViewModel;
+
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +40,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     public void onClick(View v) {
         if(v.equals(getBinding().fabAdd)){
-            Intent intent = new Intent(MainActivity.this, InsertUpdateNote.class);
-            startActivity(intent);
+            gotoIntent(InsertUpdateNote.class, null, false);
         }
     }
 
