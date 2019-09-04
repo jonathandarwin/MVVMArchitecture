@@ -1,4 +1,4 @@
-package com.example.user.mvvmarchitecture.common;
+package com.example.user.mvvmarchitecture.repository;
 
 import android.util.Log;
 

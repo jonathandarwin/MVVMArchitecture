@@ -1,4 +1,4 @@
-package com.example.user.mvvmarchitecture.viewmodel;
+package com.example.user.mvvmarchitecture.app.insertupdate;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;

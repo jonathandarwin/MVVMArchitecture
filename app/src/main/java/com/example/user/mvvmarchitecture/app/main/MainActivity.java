@@ -1,16 +1,14 @@
-package com.example.user.mvvmarchitecture.app;
+package com.example.user.mvvmarchitecture.app.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import com.example.user.mvvmarchitecture.R;
-import com.example.user.mvvmarchitecture.adapter.NoteAdapter;
-import com.example.user.mvvmarchitecture.common.BaseActivity;
-import com.example.user.mvvmarchitecture.common.NoteData;
+import com.example.user.mvvmarchitecture.app.insertupdate.InsertUpdateNote;
+import com.example.user.mvvmarchitecture.base.BaseActivity;
+import com.example.user.mvvmarchitecture.repository.NoteData;
 import com.example.user.mvvmarchitecture.databinding.ActivityMainBinding;
 import com.example.user.mvvmarchitecture.model.Note;
-import com.example.user.mvvmarchitecture.viewmodel.MainViewModel;
 
 import org.jetbrains.annotations.Nullable;
 

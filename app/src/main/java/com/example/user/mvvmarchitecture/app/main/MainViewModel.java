@@ -1,4 +1,4 @@
-package com.example.user.mvvmarchitecture.viewmodel;
+package com.example.user.mvvmarchitecture.app.main;
 
 
 import android.arch.lifecycle.LiveData;

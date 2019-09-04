@@ -1,20 +1,15 @@
-package com.example.user.mvvmarchitecture.app;
+package com.example.user.mvvmarchitecture.app.insertupdate;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.user.mvvmarchitecture.R;
-import com.example.user.mvvmarchitecture.common.BaseActivity;
+import com.example.user.mvvmarchitecture.base.BaseActivity;
 import com.example.user.mvvmarchitecture.databinding.ActivityInsertUpdateNoteBinding;
 import com.example.user.mvvmarchitecture.model.Note;
-import com.example.user.mvvmarchitecture.viewmodel.InsertUpdateNoteViewModel;
-import com.example.user.mvvmarchitecture.viewmodel.MainViewModel;
 
 public class InsertUpdateNote extends BaseActivity<ActivityInsertUpdateNoteBinding, InsertUpdateNoteViewModel>
         implements View.OnClickListener{

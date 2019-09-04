@@ -1,12 +1,10 @@
-package com.example.user.mvvmarchitecture.adapter;
+package com.example.user.mvvmarchitecture.app.main;
 
-import android.app.LauncherActivity;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.mvvmarchitecture.R;

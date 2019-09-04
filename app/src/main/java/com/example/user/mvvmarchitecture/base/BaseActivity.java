@@ -1,4 +1,4 @@
-package com.example.user.mvvmarchitecture.common;
+package com.example.user.mvvmarchitecture.base;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
