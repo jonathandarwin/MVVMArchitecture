@@ -21,10 +21,14 @@ android {
     dataBinding {
         enabled true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation rootProject.ext.appcompat
     implementation rootProject.ext.support
     implementation rootProject.ext.recycler_view
@@ -32,10 +36,14 @@ dependencies {
     implementation rootProject.ext.lifecycle_ext
     implementation rootProject.ext.support_design
     implementation rootProject.ext.constraint_layout
-    implementation rootProject.ext.java5
-    implementation rootProject.ext.dagger
-    annotationProcessor rootProject.ext.dagger_extension
+    implementation rootProject.ext.rxjava
+    implementation rootProject.ext.rxandroid
+    implementation rootProject.ext.rxlifecyle
+    implementation rootProject.ext.rxlifecyle_component
     testImplementation rootProject.ext.junit
     androidTestImplementation rootProject.ext.runner
     androidTestImplementation rootProject.ext.espresso
+    implementation project(':model')
+    implementation project(':repository')
+    implementation project(':base')
 }

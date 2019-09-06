@@ -6,7 +6,7 @@
     <data>
         <variable
             name="model"
-            type="com.example.user.mvvmarchitecture.model.Note"/>
+            type="com.example.model.Note"/>
     </data>
 
     <RelativeLayout
