@@ -8,10 +8,10 @@ import com.example.model.Note;
 import com.example.user.mvvmarchitecture.R;
 import com.example.user.mvvmarchitecture.databinding.ActivityInsertUpdateNoteBinding;
 
-public class InsertUpdateNote extends BaseActivity<ActivityInsertUpdateNoteBinding, InsertUpdateNoteViewModel>
+public class InsertUpdateNoteActivity extends BaseActivity<ActivityInsertUpdateNoteBinding, InsertUpdateNoteViewModel>
         implements View.OnClickListener{
 
-    public InsertUpdateNote(){
+    public InsertUpdateNoteActivity(){
         super(InsertUpdateNoteViewModel.class, R.layout.activity_insert_update_note);
     }
 
@@ -31,15 +31,15 @@ public class InsertUpdateNote extends BaseActivity<ActivityInsertUpdateNoteBindi
                 return;
             }
 
-            getBinding().loader.setVisibility(View.VISIBLE);
-            getViewModel().insertNote(note).observe(InsertUpdateNote.this, result -> {
-                getBinding().loader.setVisibility(View.GONE);
+            showLoading();
+            getViewModel().insertNote(note).observe(InsertUpdateNoteActivity.this, result -> {
+                removeLoading();
                 if(result){
-                    Toast.makeText(InsertUpdateNote.this, "Insert Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InsertUpdateNoteActivity.this, "Insert Success", Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else{
-                    Toast.makeText(InsertUpdateNote.this, "Insert Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InsertUpdateNoteActivity.this, "Insert Error", Toast.LENGTH_SHORT).show();
                 }
             });
         }

@@ -10,7 +10,10 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
@@ -19,6 +22,8 @@ public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewMo
     DataBinding binding;
     Class<VM> vm;
     int layout;
+    ViewGroup root;
+    View loader;
 
     public BaseActivity(){
 
@@ -35,6 +40,10 @@ public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewMo
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         viewModel = ViewModelProviders.of(this).get(vm);
         binding = DataBindingUtil.setContentView(this, layout);
+
+        // loader
+        root = findViewById(android.R.id.content);
+        loader = LayoutInflater.from(this).inflate(R.layout.loader, null);
         setListener();
     }
 
@@ -75,5 +84,13 @@ public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewMo
         builder.setTitle(title);
         builder.setMessage(message);
         return builder;
+    }
+
+    protected void showLoading(){
+        root.addView(loader);
+    }
+
+    protected void removeLoading(){
+        root.removeView(loader);
     }
 }
