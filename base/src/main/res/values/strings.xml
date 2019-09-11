@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">base</string>
 
-    <string name="error_message">Error. Please try again.</string>
+    <string name="message_error">Error. Please try again.</string>
+    <string name="message_insert_success">Insert Success</string>
+    <string name="message_please_input_all_the_field">Please input all the field</string>
 </resources>

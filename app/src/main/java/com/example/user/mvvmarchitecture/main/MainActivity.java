@@ -52,7 +52,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                     removeLoading();
                     break;
                 case MainViewModel.ERROR:
-                    Toast.makeText(this, getResources().getString(R.string.error_message), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getString(R.string.message_error), Toast.LENGTH_SHORT).show();
                     break;
             }
         });

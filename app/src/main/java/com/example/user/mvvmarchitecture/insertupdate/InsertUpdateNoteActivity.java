@@ -25,28 +25,39 @@ public class InsertUpdateNoteActivity extends BaseActivity<ActivityInsertUpdateN
     }
 
     @Override
-    public void onClick(View v) {
-        if(v.equals(getBinding().btnSave)){
-            Note note = getBinding().getModel();
-            if(!getViewModel().validateInput(note)){
-                Toast.makeText(this, "Please input all the field", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            showLoading();
-            getViewModel().insertNote(note).observe(InsertUpdateNoteActivity.this, result -> {
-                removeLoading();
-                if(result){
-                    Toast.makeText(InsertUpdateNoteActivity.this, "Insert Success", Toast.LENGTH_SHORT).show();
+    protected void setObserver() {
+        super.setObserver();
+        getViewModel().status.observe(this, status -> {
+            switch(status){
+                case InsertUpdateNoteViewModel.SHOW_LOADING:
+                    showLoading();
+                    break;
+                case InsertUpdateNoteViewModel.REMOVE_LOADING:
+                    removeLoading();
+                    break;
+                case InsertUpdateNoteViewModel.SUCCESS:
+                    Toast.makeText(InsertUpdateNoteActivity.this, getResources().getString(R.string.message_insert_success), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
                     intent.putExtra(MainActivity.EXTRA_KEY_LOAD_DATA, MainActivity.LOAD_DATA);
                     setResult(MainActivity.CODE_LOAD_DATA, intent);
                     finish();
-                }
-                else{
-                    Toast.makeText(InsertUpdateNoteActivity.this, "Insert Error", Toast.LENGTH_SHORT).show();
-                }
-            });
+                    break;
+                case InsertUpdateNoteViewModel.ERROR:
+                    Toast.makeText(this, getResources().getString(R.string.message_error), Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.equals(getBinding().btnSave)){
+            Note note = getBinding().getModel();
+            if(!getViewModel().validateInput(note)){
+                Toast.makeText(this, getResources().getString(R.string.message_please_input_all_the_field), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            getViewModel().insertNote(note);
         }
     }
 }

@@ -23,12 +23,12 @@ public class MainViewModel extends ViewModel {
     protected MutableLiveData<Integer> status = new MutableLiveData<>();
 
     public void getListNote(){
-        status.postValue(SHOW_LOADING);
+        status.setValue(SHOW_LOADING);
         // add delay
         new Handler().postDelayed(() -> {
             NoteRepository repo = new NoteRepository();
             listNote.setValue(repo.getListNote());
-            status.postValue(REMOVE_LOADING);
+            status.setValue(REMOVE_LOADING);
         }, 1500);
     }
 }

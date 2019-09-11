@@ -10,15 +10,27 @@ import rx.schedulers.Schedulers;
 
 public class InsertUpdateNoteViewModel extends ViewModel {
 
-    public LiveData<Boolean> insertNote(Note note){
-        MutableLiveData<Boolean> result = new MutableLiveData<>();
+    public final static int SHOW_LOADING = 1;
+    public final static int REMOVE_LOADING = 2;
+    public final static int ERROR = 3;
+    public final static int SUCCESS = 4;
+
+    protected MutableLiveData<Integer> status = new MutableLiveData<>();
+
+    public void insertNote(Note note){
+        status.setValue(SHOW_LOADING);
         NoteRepository repo = new NoteRepository();
         repo.insertNote(note)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(res -> result.setValue(true),
-                           error -> result.setValue(false));
-        return result;
+                .subscribe(res -> {
+                    status.setValue(REMOVE_LOADING);
+                    status.setValue(SUCCESS);
+                },
+                error -> {
+                    status.setValue(REMOVE_LOADING);
+                    status.setValue(ERROR);
+               });
     }
 
     public boolean validateInput(Note note){
