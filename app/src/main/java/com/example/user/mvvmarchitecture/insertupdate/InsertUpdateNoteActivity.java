@@ -1,5 +1,6 @@
 package com.example.user.mvvmarchitecture.insertupdate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -7,6 +8,7 @@ import com.example.base.BaseActivity;
 import com.example.model.Note;
 import com.example.user.mvvmarchitecture.R;
 import com.example.user.mvvmarchitecture.databinding.ActivityInsertUpdateNoteBinding;
+import com.example.user.mvvmarchitecture.main.MainActivity;
 
 public class InsertUpdateNoteActivity extends BaseActivity<ActivityInsertUpdateNoteBinding, InsertUpdateNoteViewModel>
         implements View.OnClickListener{
@@ -36,6 +38,9 @@ public class InsertUpdateNoteActivity extends BaseActivity<ActivityInsertUpdateN
                 removeLoading();
                 if(result){
                     Toast.makeText(InsertUpdateNoteActivity.this, "Insert Success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+                    intent.putExtra(MainActivity.EXTRA_KEY_LOAD_DATA, MainActivity.LOAD_DATA);
+                    setResult(MainActivity.CODE_LOAD_DATA, intent);
                     finish();
                 }
                 else{

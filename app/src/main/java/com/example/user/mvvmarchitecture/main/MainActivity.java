@@ -1,5 +1,6 @@
 package com.example.user.mvvmarchitecture.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,10 @@ import java.util.List;
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel>
         implements View.OnClickListener{
 
+    public final static String EXTRA_KEY_LOAD_DATA = "EXTRA_KEY_LOAD_DATA";
+    public final static int CODE_LOAD_DATA = 2;
+    public final static int LOAD_DATA = 1;
+
     List<Note> listNote = new ArrayList<>();
     NoteAdapter adapter;
 
@@ -31,6 +36,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         getBinding().recyclerview.setAdapter(adapter);
         NoteData.getInit();
         getBinding().fabAdd.setOnClickListener(this);
+        loadData();
     }
 
     @Override
@@ -41,8 +47,18 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            if(resultCode == CODE_LOAD_DATA){
+                if(data.getIntExtra(EXTRA_KEY_LOAD_DATA, 0) == LOAD_DATA){
+                    loadData();
+                }
+            }
+        }
+    }
+
+    private void loadData(){
         clearData();
         showLoading();
 

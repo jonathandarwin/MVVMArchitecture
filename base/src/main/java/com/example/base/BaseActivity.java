@@ -18,6 +18,9 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
 public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewModel> extends AppCompatActivity {
+
+    protected static int REQUEST_CODE = 1000;
+
     VM viewModel;
     DataBinding binding;
     Class<VM> vm;
@@ -73,7 +76,7 @@ public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewMo
         if(bundle != null){
             intent.putExtras(bundle);
         }
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE);
         if(isFinish){
             finish();
         }
