@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
-public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewModel> extends AppCompatActivity {
+public abstract class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewModel> extends AppCompatActivity {
 
     protected static int REQUEST_CODE = 1000;
 
@@ -47,7 +47,9 @@ public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewMo
         // loader
         root = findViewById(android.R.id.content);
         loader = LayoutInflater.from(this).inflate(R.layout.loader, null);
+
         setListener();
+        setObserver();
     }
 
     @Override
@@ -60,6 +62,10 @@ public class BaseActivity<DataBinding extends ViewDataBinding, VM extends ViewMo
     }
 
     protected void setListener(){
+
+    }
+
+    protected void setObserver(){
 
     }
 

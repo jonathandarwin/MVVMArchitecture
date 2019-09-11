@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.base.BaseActivity;
 import com.example.model.Note;
 import com.example.repository.NoteData;
@@ -40,6 +42,28 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     @Override
+    protected void setObserver() {
+        getViewModel().status.observe(this, status -> {
+            switch(status){
+                case MainViewModel.SHOW_LOADING:
+                    showLoading();
+                    break;
+                case MainViewModel.REMOVE_LOADING:
+                    removeLoading();
+                    break;
+                case MainViewModel.ERROR:
+                    Toast.makeText(this, getResources().getString(R.string.error_message), Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        });
+
+        getViewModel().listNote.observe(this, notes -> {
+            listNote.addAll(notes);
+            adapter.notifyDataSetChanged();
+        });
+    }
+
+    @Override
     public void onClick(View v) {
         if(v.equals(getBinding().fabAdd)){
             gotoIntent(InsertUpdateNoteActivity.class, null, false);
@@ -60,17 +84,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     private void loadData(){
         clearData();
-        showLoading();
-
-        getViewModel().getListNote().observe(this, notes -> {
-            // add delay
-            new Handler().postDelayed(() -> {
-                removeLoading();
-
-                listNote.addAll(notes);
-                adapter.notifyDataSetChanged();
-            },1500);
-        });
+        getViewModel().getListNote();
     }
 
     private void clearData(){

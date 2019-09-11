@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">base</string>
+
+    <string name="error_message">Error. Please try again.</string>
 </resources>
