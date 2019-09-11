@@ -38,7 +38,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         getBinding().recyclerview.setAdapter(adapter);
         NoteData.getInit();
         getBinding().fabAdd.setOnClickListener(this);
-        loadData();
+        if(!getViewModel().isLoaded){
+            loadData();
+        }
     }
 
     @Override
