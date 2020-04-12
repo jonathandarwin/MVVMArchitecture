@@ -1,17 +1,21 @@
-# MVVM Architecture
-Google introduced the new architecture in android development called MVVM (Model View View Model),
-which is one of the best architecture in android development aside from MVP (Model View Presenter) and MVI (Model View Intent).
-This architecture is very useful for unit testing.
+# Model-View-ViewModel (MVVM)
 
-This architecture contains the 3 main components : Model, View, and View Model.
-This explanation will cover the use of Model, View, View Model, and other components : Data Binding and LiveData
+## 1. What is Archtecture?
+When it comes to architecture in software development, actually we talk about the foundation of the software. To simplify its meaning, we can refer it to house architecture. Before building the house, architect should design the foundation, make sure that the foundation is strong enough to be lived. But, why we need the architecture while we can build the house without it? Well, let's take a look at this scenario. In the next year, you want to built the second floor above your house. Of course, you should have to make sure that your house is strong enough to hold all the things that placed in the second floor. Not all the house architecture is designed to hold the second floor, let alone no architecture.
+Let's back to software architecture. The scenario above also happen in software, for example add some new features, fix some bugs, etc. Without architecture, it is still possible to make the changes in the software, but it is harder than if we used a suitable architecture.
 
+## 2. What is the Advantages?
+- It is easier for your team to understand the code, because it is like a standardization of the software
+- Easier to maintain the software
+- Your code is reusable and scalable
+- Can be easily tested
 
+## 3. Introduction to MVVM
+MVVM is one of the most used architecture in android development aside from MVP, MVI, etc. MVVM consist of 3 main parts : **Model**, **View**, and **ViewModel**. Each part has its own responsibility, and it will be discussed here.
 
-## Model
-Model is the class that represent the data in the view. The data that will be display in the UI or the data
-that we get from the UI will be saved in this Model class.
-
+### Model
+Model is one of the component in MVVM architecture that responsible for handling the data that is used in your app. it can be referred as the domain object, that represent the actual data.
+<br />
 For example :
 Consider a Login Page that consists of textbox for username, password and the Button for login
 
@@ -57,21 +61,21 @@ from the UI, we know that we will hold the username and password value. so our v
 
 #### So, the model class consists of attribute that related to UI and also the getter setter method if necessary
 
+### View
+View responsible for any kind of interaction between the user and app. When the button is clicked, or user input an username in the app, View is responsible for handling that action and control what will be displayed in the screen. Activity, fragment are categorized as View in android. Please note that in this architecture, the view should not contain any business logic that used through your apps, including how the data fetched, where the source of your data, etc.
 
-## View
-View is all the file that related to UI, for example : Activity, Fragment, XML.
-View will control what will be displayed in the screen.
-#### Note : the business logic (the logic flow of the page) should not be written here.
+### ViewModel
+ViewModel is the component that differ this architecture from others. ViewModel used as a bridge between the view and model. The data from model should be passed to ViewModel before it goes to certain view.
+<br />
+**Note : ViewModel should not have any reference to its view. It only provides the data, and the caller should subscribe to certain ViewModel. Because of this, ViewModel is survive from configuration changes**
 
+## Why MVVM?
+- Loose coupling between presentation and business logic (ViewModel is not have direct reference to View)
+- Android lifecycle friendly (ViewModel survived when configuration changes)
+- Well documented in Google docs
+- Part of Jetpack component (_Jetpack is a suite of libraries, tools, guidance to help developers write high-quality apps more easily.
+source : https://developer.android.com/jetpack/_)
 
-## View Model
-View Model is the main component in this architecture.
-View Model contain the main businees logic and control the data flow that correspond to specific view.
-View has reference to the View Model but the View Model has no reference to caller class (View).
-The function of View Model is only provide the data to class that need the data and do some business logic.
-
-In summary, all the business logic in the View should be pass to the related View Model, View Model will process the logic
-, return the result back to View, and the View will display the result to the screen.
 
 ### There are few library that we use to support this architecture :
 
