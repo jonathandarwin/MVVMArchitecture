@@ -69,7 +69,7 @@ ViewModel is the component that differ this architecture from others. ViewModel 
 <br />
 **Note : ViewModel should not have any reference to its view. It only provides the data, and the caller should subscribe to certain ViewModel. Because of this, ViewModel is survive from configuration changes**
 
-## Why MVVM?
+## 4. Why MVVM?
 - Loose coupling between presentation and business logic (ViewModel is not have direct reference to View)
 - Android lifecycle friendly (ViewModel survived when configuration changes)
 - Well documented in Google docs
